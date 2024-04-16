@@ -10,6 +10,8 @@ import 'package:megaproject/widgets/drawer.dart';
 import 'package:megaproject/widgets/theme.dart';
 
 import '../widgets/item_widget.dart';
+import '../widgets/home_widgets/catalog_header.dart';
+import '../widgets/home_widgets/catalog_list.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -55,13 +57,11 @@ class _HomePageState extends State<HomePage> {
               children: [
                 CatelogHeader(),
                 if (CatalogModel.items != null && CatalogModel.items.isNotEmpty)
-                  CatalogList().expand()
+                  CatalogList().py16().expand()
                 else
-                  Center(
-                    child: CircularProgressIndicator(
-                      color: Colors.deepPurple,
-                    ),
-                  )
+                  CircularProgressIndicator(
+                    color: Colors.deepPurple,
+                  ).centered().expand(),
               ],
             ),
           ),
@@ -69,90 +69,10 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class CatelogHeader extends StatelessWidget {
-  const CatelogHeader({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        "Catalog App".text.xl5.bold.color(MyTheme.darkBluishColor).make(),
-        "Trending products".text.xl2.make(),
-      ],
-    );
-  }
-}
 
-class CatalogList extends StatelessWidget {
-  const CatalogList({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      shrinkWrap: true,
-      itemCount: CatalogModel.items.length,
-      itemBuilder: (context, index) {
-        final catalog = CatalogModel.items[index];
-        return CatalogItem(
-          catalog: catalog,
-        );
-      },
-    );
-  }
-}
 
-class CatalogItem extends StatelessWidget {
-  const CatalogItem({super.key, required this.catalog})
-      : assert(catalog != null);
-  final Item catalog;
 
-  @override
-  Widget build(BuildContext context) {
-    return VxBox(
-      //  VxBox() == Container()
-      child: Row(
-        children: [
-          CatalogImage(image: catalog.image,
-          ),
-          Expanded(child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              
-              catalog.name.text.lg.bold.color(MyTheme.darkBluishColor).make(),
-              catalog.desc.text.textStyle(context.captionStyle).make(),
-              6.heightBox,
-              ButtonBar(
-                alignment: MainAxisAlignment.spaceBetween,
-                buttonPadding:EdgeInsets.zero,
-                children: [
-                
-                "\$${catalog.price}".text.bold.lg.make(),
-                ElevatedButton(onPressed: (){},
-                style: ButtonStyle(backgroundColor: MaterialStateProperty.all(MyTheme.darkBluishColor)),
-                 child: 
-                "Buy".text.color(Colors.white).make()),
-              ],).pOnly(right: 8.0),
-            ],
-          ))
-          
-        ],
-      ),
-    ).white.rounded.square(150).make().py16();
-  }
-}
 
-class CatalogImage extends StatelessWidget {
-  const CatalogImage({
-    super.key,
-    required this.image,
-  });
-  final String image;
-  @override
-  Widget build(BuildContext context) {
-    return Image.network(
-      image,
-    ).box.rounded.p8.color(MyTheme.creamColor).make().p16().w40(context);
-  }
-}
+
