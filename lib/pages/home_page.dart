@@ -122,18 +122,18 @@ class CatalogItem extends StatelessWidget {
               
               catalog.name.text.lg.bold.color(MyTheme.darkBluishColor).make(),
               catalog.desc.text.textStyle(context.captionStyle).make(),
-              5.heightBox,
+              6.heightBox,
               ButtonBar(
                 alignment: MainAxisAlignment.spaceBetween,
-                buttonPadding: Vx.mH8,
+                buttonPadding:EdgeInsets.zero,
                 children: [
                 
                 "\$${catalog.price}".text.bold.lg.make(),
                 ElevatedButton(onPressed: (){},
                 style: ButtonStyle(backgroundColor: MaterialStateProperty.all(MyTheme.darkBluishColor)),
                  child: 
-                "Buy".text.color(Colors.white).make())
-              ],).pOnly(right: 8.0)
+                "Buy".text.color(Colors.white).make()),
+              ],).pOnly(right: 8.0),
             ],
           ))
           
