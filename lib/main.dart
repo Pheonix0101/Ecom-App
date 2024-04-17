@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:megaproject/pages/cart_page.dart';
 
 import 'package:megaproject/pages/home_page.dart';
 import 'package:megaproject/pages/login_page.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       // home: const HomePage(),
       debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.system,
       theme: MyTheme.lightTheme(context),
 
 
@@ -32,11 +33,13 @@ class MyApp extends StatelessWidget {
       // darkTheme: ThemeData(
       //   brightness: Brightness.dark,
       // ),
-      initialRoute: MyRoutes.homeRoute,
+      initialRoute: MyRoutes.loginRoute,
       routes: {
         "/": (context) => const LoginPage(),
         MyRoutes.homeRoute: (context) => const HomePage(),
         MyRoutes.loginRoute: (context) => const LoginPage(),
+        MyRoutes.cartRoute: (context) => const CartPage(),
+
       },
     );
   }

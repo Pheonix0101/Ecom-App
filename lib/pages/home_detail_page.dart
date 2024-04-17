@@ -17,10 +17,12 @@ class HomedetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      // backgroundColor: MyTheme.creamColor,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
+      backgroundColor: context.canvasColor,
       bottomNavigationBar: Container(
-        color: MyTheme.creamColor,
+        color: context.cardColor,
         child: ButtonBar(
           alignment: MainAxisAlignment.spaceBetween,
           buttonPadding: EdgeInsets.zero,
@@ -30,9 +32,9 @@ class HomedetailPage extends StatelessWidget {
                     onPressed: () {},
                     style: ButtonStyle(
                         backgroundColor:
-                            MaterialStateProperty.all(MyTheme.darkBluishColor)),
-                    child: "Buy".text.color(Colors.white).make())
-                .wh(100, 50),
+                            MaterialStateProperty.all(context.primaryColor)),
+                    child: "Add to cart".text.color(Colors.white).make())
+                .wh(130, 50),
           ],
         ).p32(),
       ),
@@ -41,6 +43,7 @@ class HomedetailPage extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
+              // backgroundColor(context.cardColor),
               Hero(
                       tag: Key(catalog.id.toString()),
                       child: Image.network(catalog.image))
@@ -51,16 +54,21 @@ class HomedetailPage extends StatelessWidget {
                 edge: VxEdge.top,
                 arcType: VxArcType.convey,
                 child: Container(
-                  color: MyTheme.creamColor,
+                  color: context.cardColor,
                   width: context.screenWidth,
                   child: Column(
                     children: [
                       catalog.name.text.lg.bold.xl3
-                          .color(MyTheme.darkBluishColor)
+                          .color(context.accentColor)
                           .make(),
                       catalog.desc.text.xl
                           .textStyle(context.captionStyle)
                           .make(),
+                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                          .text
+                          .textStyle(context.captionStyle)
+                          .make()
+                          .p16()
                     ],
                   ).py64(),
                 ),

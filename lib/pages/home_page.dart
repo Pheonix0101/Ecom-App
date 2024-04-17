@@ -1,15 +1,15 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:megaproject/utils/routes.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import 'package:megaproject/models/catalog.dart';
-import 'package:megaproject/widgets/drawer.dart';
 import 'package:megaproject/widgets/theme.dart';
 
-import '../widgets/item_widget.dart';
 import '../widgets/home_widgets/catalog_header.dart';
 import '../widgets/home_widgets/catalog_list.dart';
 
@@ -48,7 +48,17 @@ class _HomePageState extends State<HomePage> {
     // final dummyList = List.generate(5, (index) => CatalogModel.items[0]);   /// used to genrate certain item
 
     return Scaffold(
-        backgroundColor: MyTheme.creamColor,
+        backgroundColor: context.canvasColor,
+        floatingActionButton: FloatingActionButton(
+          onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
+          
+          backgroundColor: context.theme.primaryColor,
+          child: Icon(
+            CupertinoIcons.cart,
+            color: Colors.white,
+            // fill: BorderSide.strokeAlignCenter,
+          ),
+        ),
         body: SafeArea(
           child: Container(
             padding: Vx.m32,
@@ -68,11 +78,3 @@ class _HomePageState extends State<HomePage> {
         ));
   }
 }
-
-
-
-
-
-
-
-
