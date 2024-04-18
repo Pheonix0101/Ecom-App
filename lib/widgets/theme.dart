@@ -39,7 +39,7 @@ class MyTheme {
           color: Colors.black,
           elevation: 0.0,
           iconTheme: IconThemeData(color: Colors.white),
-        ),
+          titleTextStyle: TextStyle(color: Colors.white)),
       );
 
   static Color creamColor = Color(0xfff5f5f5);
